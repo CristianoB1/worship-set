@@ -1,0 +1,54 @@
+<nav class="bg-gray-800 p-4">
+  <div class="grid grid-cols-1 xl:grid-cols-12 gap-y-2">
+    <div class="text-white text-2xl font-bold col-span-2">
+      WorshipSet
+    </div>
+    <div class="col-span-8 xl:mx-2">
+      <input type="text" placeholder="Buscar música..." class="p-1 rounded-md border w-full bg-white border-gray-300">
+      <!-- <input type="text" placeholder="Buscar música..." class="mt-2 p-2 rounded-md border border-gray-300" (input)="filterSongs($event.target.value)"> -->
+    </div>
+    <div class="flex gap-2 col-span-2">
+      <button class=" text-white px-2 py-1.5 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300" (click)="openDialogInsert('0ms', '0ms')">Adicionar</button>
+      <button class=" text-white px-2 py-1.5 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">Tutorial</button>
+      <button class=" text-white px-2 py-1.5 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-blue-300">Deletar</button>
+    </div>
+  </div>
+</nav>
+
+<div class="container mx-auto p-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+    <div class="bg-white shadow-md rounded-lg p-4">
+      <h2 class="text-xl font-bold text-gray-600">Nome da Música <i class="fas fa-music"></i></h2>
+      <p>Tom: <span class="text-blue-500">G</span></p>
+      <p>BPM: <span class="text-blue-500">120</span></p>
+      <p>Categoria: <span class="text-blue-500">Adoração</span></p>
+      <a href="LINK_AQUI" target="_blank" class="w-full mt-2 block text-blue-500 underline">Link para cifra...</a>
+      <p>Duração: <span class="text-blue-500">4:00</span></p>
+    </div>
+    <div class="bg-white shadow-md rounded-lg p-4">
+      <h2 class="text-xl font-bold text-gray-600">Nome da Música <i class="fas fa-music"></i></h2>
+      <p>Tom: <span class="text-blue-500">A</span></p>
+      <p>BPM: <span class="text-blue-500">130</span></p>
+      <p>Categoria: <span class="text-blue-500">Celebração</span></p>
+      <a href="LINK_AQUI" target="_blank" class="w-full mt-2 block text-blue-500 underline">Link para cifra...</a>
+      <p>Duração: <span class="text-blue-500">3:30</span></p>
+    </div>
+    <div class="bg-white shadow-md rounded-lg p-4">
+      <h2 class="text-xl font-bold text-gray-600">Nome da Música <i class="fas fa-music"></i></h2>
+      <p>Tom: <span class="text-blue-500">Bb</span></p>
+      <p>BPM: <span class="text-blue-500">140</span></p>
+      <p>Categoria: <span class="text-blue-500">Ministração</span></p>
+      <a href="LINK_AQUI" target="_blank" class="w-full mt-2 block text-blue-500 underline">Link para cifra...</a>
+      <p>Duração: <span class="text-blue-500">5:00</span></p>
+    </div>
+    <div class="bg-white shadow-md rounded-lg p-4">
+      <h2 class="text-xl font-bold text-gray-600">Nome da Música <i class="fas fa-music"></i></h2>
+      <p>Tom: <span class="text-blue-500">Bb</span></p>
+      <p>BPM: <span class="text-blue-500">140</span></p>
+      <p>Categoria: <span class="text-blue-500">Ministração</span></p>
+      <a href="LINK_AQUI" target="_blank" class="w-full mt-2 block text-blue-500 underline">Link para cifra...</a>
+      <p>Duração: <span class="text-blue-500">5:00</span></p>
+    </div>
+    <!-- Adicione mais cards conforme necessário -->
+  </div>
+</div>

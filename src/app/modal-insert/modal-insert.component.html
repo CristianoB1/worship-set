@@ -1,0 +1,51 @@
+<mat-dialog-content >
+  <div class="flex flex-wrap justify-center  w-full ">
+    <form class="grid grid-cols-2 gap-1.5">
+      <div>
+        <label class="block font-semibold mb-1">Nome da música</label>
+        <input type="text" class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" placeholder="Nome da música" />
+      </div>
+      <div>
+        <label class="block font-semibold mb-1">Tom</label>
+        <select class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-300">
+          <option>C</option>
+          <option>C#</option>
+          <option>D</option>
+          <option>D#</option>
+          <option>E</option>
+          <option>F</option>
+          <option>F#m</option>
+          <option>G</option>
+          <option>G#</option>
+          <option>A</option>
+          <option>A#</option>
+          <option>B</option>
+        </select>
+      </div>
+      <div>
+        <label class="block font-semibold mb-1">BPM</label>
+        <input type="number" min="40" max="300" class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" placeholder="BPM" />
+      </div>
+      <div>
+        <label class="block font-semibold mb-1">Categoria</label>
+        <select class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-300">
+          <option>Adoração</option>
+          <option>Celebração</option>
+          <option>Ministração</option>
+        </select>
+      </div>
+      <div>
+        <label class="block font-semibold mb-1">Cifra</label>
+        <input type="number" min="40" max="300" class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" placeholder="link" />
+      </div>
+      <div>
+        <label class="block font-semibold mb-1">Duração</label>
+        <input type="time" step="1" class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" />
+      </div>
+    </form>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button matButton mat-dialog-close>No</button>
+  <button matButton mat-dialog-close cdkFocusInitial>Ok</button>
+</mat-dialog-actions>
