@@ -8,6 +8,7 @@ import { Observable } from 'rxjs';
 export class MusicasService {
 
   private readonly url = 'http://localhost:3000/musicas';
+  //private readonly url = 'https://worshipsetapi.onrender.com/musicas'
 
   constructor(private http: HttpClient) {
     this.getMusicas();
@@ -17,11 +18,14 @@ export class MusicasService {
     return this.http.get<Musicas[]>(this.url);
   }
 
-  postMusica(musica: Musicas) {
-    this.http.post(this.url, musica).subscribe({
-      next: (data) => console.log('musica inserida:', data),
-      error: (err) => console.error('erro ao inserir musica:', err),
-    });
+  // postMusica(musicaData: Musicas) {
+  //   this.http.post(this.url, musicaData).subscribe({
+  //     next: (data) => console.log('musica inserida:', data),
+  //     error: (err) => console.error('erro ao inserir musica:', err),
+  //   });
+  // }
+  postMusica(musica: any): Observable<any> {
+    return this.http.post<Musicas>(this.url, musica);
   }
 
   deleteMusica(id: number) {

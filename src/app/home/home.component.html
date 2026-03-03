@@ -4,7 +4,7 @@
       WorshipSet
     </div>
     <div class="col-span-8 xl:mx-2">
-      <input type="text" placeholder="Buscar música..." class="p-1 rounded-md border w-full bg-white border-gray-300" (change)="filterSongs($event.target.value)">
+      <input type="text" placeholder="Buscar música..." class="p-1 rounded-md border w-full bg-white border-gray-300" #search (input)="filterSongs(search.value)">
       <!-- <input type="text" placeholder="Buscar música..." class="mt-2 p-2 rounded-md border border-gray-300" (input)="filterSongs($event.target.value)"> -->
     </div>
     <div class="flex gap-2 col-span-2">

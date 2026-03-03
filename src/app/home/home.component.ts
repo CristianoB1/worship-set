@@ -15,6 +15,7 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent implements OnInit {
 
   musicas: Musicas[] = [];
+  musicasOriginal: Musicas[] = [];
 
   readonly dialogInsert = inject(MatDialog);
   openDialogInsert(enterAnimationDuration: string, exitAnimationDuration: string): void {
@@ -24,31 +25,32 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  constructor(private musicasService: MusicasService) { 
-    this.musicasService.getMusicas().subscribe({
-      next: (data) => this.musicas = data,
-      error: (err) => console.error('erro ao obter musicas:', err),
-    });
+  constructor(private musicasService: MusicasService) {
+
   }
 
   ngOnInit() {
     this.musicasService.getMusicas().subscribe({
-      next: (data) => this.musicas = data,
-      error: (err) => console.error('erro ao obter musicas:', err),
-    });
-    
-  }
-
-  //filtro por nome da musica em um input de busca
-  filterSongs(searchTerm: string) {
-    this.musicasService.getMusicas().subscribe({
       next: (data) => {
-        this.musicas = data.filter(musica => musica.nome.toLowerCase().includes(searchTerm.toLowerCase()));
+        this.musicas = data;
+        this.musicasOriginal = data;
       },
       error: (err) => console.error('erro ao obter musicas:', err),
     });
+
   }
-  
+
+  //filtro por nome da musica em um input de busca
+  filterSongs(searchTerm: string): void {
+    if (!searchTerm) {
+      this.musicas = this.musicasOriginal;
+      return;
+    }
+
+    this.musicas = this.musicasOriginal.filter(musica =>
+      musica.nome.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  }
 }
 
 

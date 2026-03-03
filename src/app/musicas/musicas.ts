@@ -1,9 +1,9 @@
 export interface Musicas {
-  id: number;
-  nome: string;
-  tom: string;
-  bpm: number;
-  categoria: string;
-  link: string;
-  duracao: string;
+    id?: number;
+    nome: string;
+    tom: string;
+    bpm: number | null;
+    categoria: string;
+    link: string;
+    duracao: string;
 }
