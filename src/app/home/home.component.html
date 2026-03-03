@@ -10,7 +10,7 @@
     <div class="flex gap-2 col-span-2">
       <button class=" text-white px-2 py-1.5 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300" (click)="openDialogInsert('0ms', '0ms')">Adicionar</button>
       <!-- <button class=" text-white px-2 py-1.5 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">Tutorial</button> -->
-      <button class=" text-white px-2 py-1.5 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-blue-300">Deletar</button>
+      <button class=" text-white px-2 py-1.5 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-blue-300" (click)="openDialogDel('0ms', '0ms')">Deletar</button>
     </div>
   </div>
 </nav>
@@ -26,6 +26,5 @@
       <a href="{{ card.link }}" target="_blank" class="w-full mt-2 block text-blue-500 underline">Link para cifra...</a>
       <p>Duração: <span class="text-blue-500">{{ card.duracao }}</span></p>
     </div>
-    <!-- Adicione mais cards conforme necessário -->
   </div>
 </div>

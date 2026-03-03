@@ -7,8 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class MusicasService {
 
-  private readonly url = 'http://localhost:3000/musicas';
-  //private readonly url = 'https://worshipsetapi.onrender.com/musicas'
+  //private readonly url = 'http://localhost:3000/musicas';
+  private readonly url = 'https://worshipsetapi.onrender.com/musicas'
 
   constructor(private http: HttpClient) {
     this.getMusicas();
@@ -28,11 +28,8 @@ export class MusicasService {
     return this.http.post<Musicas>(this.url, musica);
   }
 
-  deleteMusica(id: number) {
-    this.http.delete(`${this.url}/${id}`).subscribe({
-      next: (data) => console.log('musica deletada:', data),
-      error: (err) => console.error('erro ao deletar musica:', err),
-    });
+  deleteMusica(id: number): Observable<any> {
+    return this.http.delete(`${this.url}/${id}`)
   }
 
 }
