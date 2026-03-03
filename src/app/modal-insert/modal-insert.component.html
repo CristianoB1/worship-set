@@ -36,7 +36,7 @@
       </div>
       <div>
         <label class="block font-semibold mb-1">Cifra</label>
-        <input type="number" min="40" max="300" class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" placeholder="link" />
+        <input type="text" class="w-full border rounded-md px-3 py-2 focus:outline-none focus:ring focus:border-blue-300" placeholder="link" />
       </div>
       <div>
         <label class="block font-semibold mb-1">Duração</label>
@@ -45,7 +45,8 @@
     </form>
   </div>
 </mat-dialog-content>
-<mat-dialog-actions>
-  <button matButton mat-dialog-close>No</button>
-  <button matButton mat-dialog-close cdkFocusInitial>Ok</button>
-</mat-dialog-actions>
+<div>
+  <mat-dialog-actions align="center">
+    <button class="text-white px-2 py-1.5 rounded-md bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">Adicionar</button>
+  </mat-dialog-actions>
+</div>

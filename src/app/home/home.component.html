@@ -4,12 +4,12 @@
       WorshipSet
     </div>
     <div class="col-span-8 xl:mx-2">
-      <input type="text" placeholder="Buscar música..." class="p-1 rounded-md border w-full bg-white border-gray-300">
+      <input type="text" placeholder="Buscar música..." class="p-1 rounded-md border w-full bg-white border-gray-300" (change)="filterSongs($event.target.value)">
       <!-- <input type="text" placeholder="Buscar música..." class="mt-2 p-2 rounded-md border border-gray-300" (input)="filterSongs($event.target.value)"> -->
     </div>
     <div class="flex gap-2 col-span-2">
       <button class=" text-white px-2 py-1.5 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300" (click)="openDialogInsert('0ms', '0ms')">Adicionar</button>
-      <button class=" text-white px-2 py-1.5 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">Tutorial</button>
+      <!-- <button class=" text-white px-2 py-1.5 rounded-md hover:bg-blue-600 focus:outline-none focus:ring focus:border-blue-300">Tutorial</button> -->
       <button class=" text-white px-2 py-1.5 rounded-md hover:bg-red-600 focus:outline-none focus:ring focus:border-blue-300">Deletar</button>
     </div>
   </div>
@@ -19,6 +19,7 @@
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
     <div class="bg-white shadow-md rounded-lg p-4" *ngFor="let card of musicas">
       <h2 class="text-xl font-bold text-gray-600">{{ card.nome }} <i class="fas fa-music"></i></h2>
+      <p> ID: <span class="text-blue-500">{{ card.id }}</span></p>
       <p>Tom: <span class="text-blue-500">{{ card.tom }}</span></p>
       <p>BPM: <span class="text-blue-500">{{ card.bpm }}</span></p>
       <p>Categoria: <span class="text-blue-500">{{ card.categoria }}</span></p>

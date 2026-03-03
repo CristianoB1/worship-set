@@ -36,8 +36,19 @@ export class HomeComponent implements OnInit {
       next: (data) => this.musicas = data,
       error: (err) => console.error('erro ao obter musicas:', err),
     });
+    
   }
 
+  //filtro por nome da musica em um input de busca
+  filterSongs(searchTerm: string) {
+    this.musicasService.getMusicas().subscribe({
+      next: (data) => {
+        this.musicas = data.filter(musica => musica.nome.toLowerCase().includes(searchTerm.toLowerCase()));
+      },
+      error: (err) => console.error('erro ao obter musicas:', err),
+    });
+  }
+  
 }
 
 
