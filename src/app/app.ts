@@ -1,6 +1,7 @@
 import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HomeComponent } from "./home/home.component";
+import { MusicasService } from './musicas/musicas.service';
 
 @Component({
   selector: 'app-root',
@@ -11,4 +12,10 @@ import { HomeComponent } from "./home/home.component";
 })
 export class App {
   protected readonly title = signal('worshipset');
+
+  // constructor(private musicasService: MusicasService) {
+  //   this.musicasService.GetMusicas();
+
+  // }
+  
 }

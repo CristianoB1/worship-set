@@ -17,37 +17,13 @@
 
 <div class="container mx-auto p-4">
   <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
-    <div class="bg-white shadow-md rounded-lg p-4">
-      <h2 class="text-xl font-bold text-gray-600">Nome da Música <i class="fas fa-music"></i></h2>
-      <p>Tom: <span class="text-blue-500">G</span></p>
-      <p>BPM: <span class="text-blue-500">120</span></p>
-      <p>Categoria: <span class="text-blue-500">Adoração</span></p>
-      <a href="LINK_AQUI" target="_blank" class="w-full mt-2 block text-blue-500 underline">Link para cifra...</a>
-      <p>Duração: <span class="text-blue-500">4:00</span></p>
-    </div>
-    <div class="bg-white shadow-md rounded-lg p-4">
-      <h2 class="text-xl font-bold text-gray-600">Nome da Música <i class="fas fa-music"></i></h2>
-      <p>Tom: <span class="text-blue-500">A</span></p>
-      <p>BPM: <span class="text-blue-500">130</span></p>
-      <p>Categoria: <span class="text-blue-500">Celebração</span></p>
-      <a href="LINK_AQUI" target="_blank" class="w-full mt-2 block text-blue-500 underline">Link para cifra...</a>
-      <p>Duração: <span class="text-blue-500">3:30</span></p>
-    </div>
-    <div class="bg-white shadow-md rounded-lg p-4">
-      <h2 class="text-xl font-bold text-gray-600">Nome da Música <i class="fas fa-music"></i></h2>
-      <p>Tom: <span class="text-blue-500">Bb</span></p>
-      <p>BPM: <span class="text-blue-500">140</span></p>
-      <p>Categoria: <span class="text-blue-500">Ministração</span></p>
-      <a href="LINK_AQUI" target="_blank" class="w-full mt-2 block text-blue-500 underline">Link para cifra...</a>
-      <p>Duração: <span class="text-blue-500">5:00</span></p>
-    </div>
-    <div class="bg-white shadow-md rounded-lg p-4">
-      <h2 class="text-xl font-bold text-gray-600">Nome da Música <i class="fas fa-music"></i></h2>
-      <p>Tom: <span class="text-blue-500">Bb</span></p>
-      <p>BPM: <span class="text-blue-500">140</span></p>
-      <p>Categoria: <span class="text-blue-500">Ministração</span></p>
-      <a href="LINK_AQUI" target="_blank" class="w-full mt-2 block text-blue-500 underline">Link para cifra...</a>
-      <p>Duração: <span class="text-blue-500">5:00</span></p>
+    <div class="bg-white shadow-md rounded-lg p-4" *ngFor="let card of musicas">
+      <h2 class="text-xl font-bold text-gray-600">{{ card.nome }} <i class="fas fa-music"></i></h2>
+      <p>Tom: <span class="text-blue-500">{{ card.tom }}</span></p>
+      <p>BPM: <span class="text-blue-500">{{ card.bpm }}</span></p>
+      <p>Categoria: <span class="text-blue-500">{{ card.categoria }}</span></p>
+      <a href="{{ card.link }}" target="_blank" class="w-full mt-2 block text-blue-500 underline">Link para cifra...</a>
+      <p>Duração: <span class="text-blue-500">{{ card.duracao }}</span></p>
     </div>
     <!-- Adicione mais cards conforme necessário -->
   </div>
