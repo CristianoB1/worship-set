@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class ModalDeleteComponent implements OnInit {
 
+  erroMsg: string = '';
   id!: number;
 
   constructor(private musicaService: MusicasService,
@@ -27,8 +28,14 @@ export class ModalDeleteComponent implements OnInit {
     console.log('deletar musica com id:', this.id);
 
     this.musicaService.deleteMusica(this.id).subscribe({
-      next: () => console.log('Música deletada com sucesso'),
-      error: (err: any) => console.error(err)
+      next: () => {
+        console.log('Música deletada com sucesso');
+        window.location.reload();
+      },
+      error: (err: any) => {
+        console.error(err)
+        this.erroMsg = 'Erro ao deletar a música. Verifique o ID e tente novamente.';
+      },
     });
   }
 

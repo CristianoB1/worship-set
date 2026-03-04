@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 })
 export class ModalInsertComponent implements OnInit {
 
+  erroMsg: string = '';
+
   musicaData = {
     nome: '',
     tom: '',
@@ -32,14 +34,21 @@ export class ModalInsertComponent implements OnInit {
   ngOnInit() {
   }
 
+
+
   addMusica() {
     console.log('Musica a ser inserida:', this.musicaData);
     this.musicasService.postMusica(this.musicaData).subscribe({
       next: (data) => {
         console.log('Musica inserida com sucesso:', data);
-        // Aqui você pode adicionar lógica para fechar o modal ou atualizar a lista de músicas
+        this.erroMsg = '';
+        this.fecharModal();
+        window.location.reload();
       },
-      error: (err) => console.error('Erro ao inserir musica:', err),
+      error: (err) => {
+        console.error('Erro ao inserir musica:', err);
+        this.erroMsg = 'Erro ao inserir música. Tente novamente.';
+      }
     });
   }
 
