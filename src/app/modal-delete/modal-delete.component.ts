@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogContent } from "@angular/material/dialog";
+import { MatDialogContent, MatDialogRef } from "@angular/material/dialog";
 import { CommonModule } from "@angular/common";
 import { MusicasService } from "../musicas/musicas.service";
 import { FormsModule } from '@angular/forms';
@@ -15,7 +15,9 @@ export class ModalDeleteComponent implements OnInit {
 
   id!: number;
 
-  constructor(private musicaService: MusicasService) { }
+  constructor(private musicaService: MusicasService,
+    private dialogRef: MatDialogRef<ModalDeleteComponent>
+  ) { }
 
 
   ngOnInit() {
@@ -28,6 +30,10 @@ export class ModalDeleteComponent implements OnInit {
       next: () => console.log('Música deletada com sucesso'),
       error: (err: any) => console.error(err)
     });
+  }
+
+  fecharModal() {
+    this.dialogRef.close();
   }
 
 }

@@ -1,7 +1,7 @@
 import { MusicasService } from './../musicas/musicas.service';
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { MatDialogContent } from '@angular/material/dialog';
+import { MatDialogContent, MatDialogRef } from '@angular/material/dialog';
 import { FormsModule } from '@angular/forms';
 
 
@@ -23,7 +23,9 @@ export class ModalInsertComponent implements OnInit {
     duracao: ''
   }
 
-  constructor(private musicasService: MusicasService) {
+  constructor(private musicasService: MusicasService,
+    private dialogRef: MatDialogRef<ModalInsertComponent>
+  ) {
     console.log(this.musicasService)
   }
 
@@ -41,6 +43,9 @@ export class ModalInsertComponent implements OnInit {
     });
   }
 
+  fecharModal() {
+    this.dialogRef.close();
+  }
   // isValidDuration(value: string): boolean {
   //   const regex = /^[0-5]?\d:[0-5]\d$/;
   //   return regex.test(value);

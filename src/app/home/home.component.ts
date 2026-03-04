@@ -5,6 +5,7 @@ import { MusicasService } from '../musicas/musicas.service';
 import { Musicas } from '../musicas/musicas';
 import { CommonModule } from '@angular/common';
 import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
+import { ModalTutoriaisComponent } from '../modal-tutoriais/modal-tutoriais.component';
 
 
 @Component({
@@ -29,6 +30,13 @@ export class HomeComponent implements OnInit {
   readonly dialogDel = inject(MatDialog);
   openDialogDel(enterAnimationDuration: string, exitAnimationDuration: string): void {
     this.dialogInsert.open(ModalDeleteComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+  readonly dialogTutor = inject(MatDialog);
+  openDialogTutor(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialogInsert.open(ModalTutoriaisComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
     });

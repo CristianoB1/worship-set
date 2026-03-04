@@ -5,7 +5,7 @@
       <input type="number" class="border border-gray-300 rounded p-2 w-full" placeholder="Digite o ID aqui" [(ngModel)]="id" name="id">
     </div>
     <div class="p-2 flex justify-between">
-      <button class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 focus:outline-none focus:ring focus:border-gray-300">Cancelar</button>
+      <button class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 focus:outline-none focus:ring focus:border-gray-300" (click)="fecharModal()">Cancelar</button>
       <button class="bg-red-500 text-white px-4 py-2 rounded hover:bg-red-600 focus:outline-none focus:ring focus:border-red-300" (click)="deleteMusica()">Deletar</button>
     </div>
   </form>
