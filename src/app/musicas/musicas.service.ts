@@ -11,7 +11,6 @@ export class MusicasService {
   private readonly url = 'https://worshipsetapi.onrender.com/musicas'
 
   constructor(private http: HttpClient) {
-    this.getMusicas();
   }
 
   getMusicas(): Observable<Musicas[]> {
