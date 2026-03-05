@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
 
   readonly dialogDel = inject(MatDialog);
   openDialogDel(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialogInsert.open(ModalDeleteComponent, {
+    this.dialogDel.open(ModalDeleteComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
     });
