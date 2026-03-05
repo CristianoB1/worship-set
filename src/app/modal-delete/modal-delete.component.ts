@@ -32,6 +32,13 @@ export class ModalDeleteComponent implements OnInit {
         console.log('Música deletada com sucesso');
         // setTimeout(() => {
         // window.location.reload()}, 2000);
+        setTimeout(() => {
+          this.musicaService.getMusicas().subscribe({
+            next: (data) => {
+              console.log('Músicas atualizadas:', data);
+            }
+          });
+        }, 6000);
       },
       error: (err: any) => {
         console.error(err)
