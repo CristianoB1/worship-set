@@ -46,20 +46,7 @@ export class ModalDeleteComponent implements OnInit {
   }
 
   fecharModal() {
-    this.dialogRef.afterClosed().subscribe(() => {
-      this.carregarMusicas(); // Atualiza a lista de músicas após fechar o modal
-      ;
-    })
-  }
-
-  carregarMusicas() {
-    this.musicaService.getMusicas().subscribe({
-      next: (data) => {
-        this.musicas = data;
-        // this.musicasOriginal = data;
-      },
-      error: (err) => console.error('erro ao obter musicas:', err),
-    });
+    this.dialogRef.close();
   }
 
 }

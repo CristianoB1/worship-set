@@ -21,10 +21,15 @@ export class HomeComponent implements OnInit {
 
   readonly dialogInsert = inject(MatDialog);
   openDialogInsert(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialogInsert.open(ModalInsertComponent, {
+    const dialogRef = this.dialogInsert.open(ModalInsertComponent, {
       enterAnimationDuration,
       exitAnimationDuration,
     });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.carregarMusicas();
+    });
+
   }
 
   readonly dialogDel = inject(MatDialog);
@@ -48,7 +53,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.carregarMusicas();
-
   }
 
   //filtro por nome da musica em um input de busca
