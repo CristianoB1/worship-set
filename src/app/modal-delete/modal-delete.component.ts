@@ -27,26 +27,39 @@ export class ModalDeleteComponent implements OnInit {
   }
 
   deleteMusica() {
-  console.log('deletar musica com id:', this.id);
+    console.log('deletar musica com id:', this.id);
 
-  this.musicaService.deleteMusica(this.id).subscribe({
-    next: () => {
-      console.log('Música deletada com sucesso');
+    this.musicaService.deleteMusica(this.id).subscribe({
+      next: () => {
+        console.log('Música deletada com sucesso');
 
-      this.musicaService.getMusicas().subscribe((data) => {
-        this.musicas = data; // ATUALIZA A TELA
-      });
+        this.musicaService.getMusicas().subscribe((data) => {
+          this.musicas = data; // ATUALIZA A TELA
+        });
 
-    },
-    error: (err: any) => {
-      console.error(err)
-      this.erroMsg = 'Erro ao deletar a música. Verifique o ID e tente novamente.';
-    },
-  });
-}
+      },
+      error: (err: any) => {
+        console.error(err)
+        this.erroMsg = 'Erro ao deletar a música. Verifique o ID e tente novamente.';
+      },
+    });
+  }
 
   fecharModal() {
-    this.dialogRef.close();
+    this.dialogRef.afterClosed().subscribe(() => {
+      this.carregarMusicas(); // Atualiza a lista de músicas após fechar o modal
+      ;
+    })
+  }
+
+  carregarMusicas() {
+    this.musicaService.getMusicas().subscribe({
+      next: (data) => {
+        this.musicas = data;
+        // this.musicasOriginal = data;
+      },
+      error: (err) => console.error('erro ao obter musicas:', err),
+    });
   }
 
 }
