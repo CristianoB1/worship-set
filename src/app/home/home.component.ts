@@ -92,6 +92,16 @@ export class HomeComponent implements OnInit {
       musica.nome.toLowerCase().includes(searchTerm.toLowerCase())
     );
   }
+
+  carregarMusicas() {
+    this.musicasService.getMusicas().subscribe({
+      next: (data) => {
+        this.musicas = data;
+        this.musicasOriginal = data;
+      },
+      error: (err) => console.error('erro ao obter musicas:', err),
+    });
+  }
 }
 
 
