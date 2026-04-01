@@ -24,13 +24,13 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.musicasService.getMusicas().subscribe({
-      next: (data) => {
-        this.musicas = data;
-        this.musicasOriginal = data;
-      },
-      error: (err) => console.error('erro ao obter musicas:', err),
-    });
+    // this.musicasService.getMusicas().subscribe({
+    //   next: (data) => {
+    //     this.musicas = data;
+    //     this.musicasOriginal = data;
+    //   },
+    //   error: (err) => console.error('erro ao obter musicas:', err),
+    // });
     this.atualizarLista();
   }
 
@@ -76,8 +76,9 @@ export class HomeComponent implements OnInit {
     next: (data) => {
       this.musicas = data;
       this.musicasOriginal = data;
+      console.log('Dados carregados com sucesso:');
     },
-    error: (err) => console.error('Erro ao atualizar lista:', err),
+    error: (err) => console.error('Erro ao obter musicas::', err),
   });
 }
 
