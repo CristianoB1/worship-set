@@ -13,10 +13,14 @@ export class MusicasService {
   constructor(private http: HttpClient) {
   }
 
+  // getMusicas(): Observable<Musicas[]> {
+  //   return this.http.get<Musicas[]>(this.url);
+  // }
   getMusicas(): Observable<Musicas[]> {
-    return this.http.get<Musicas[]>(this.url);
+    // Adiciona um timestamp para garantir que a URL seja única a cada chamada
+    const urlComCacheBuster = `${this.url}?t=${new Date().getTime()}`;
+    return this.http.get<Musicas[]>(urlComCacheBuster);
   }
-
   // postMusica(musicaData: Musicas) {
   //   this.http.post(this.url, musicaData).subscribe({
   //     next: (data) => console.log('musica inserida:', data),
