@@ -33,6 +33,8 @@ export class ModalDeleteComponent implements OnInit {
       next: () => {
         console.log('Música deletada com sucesso');
 
+        this.dialogRef.close(this.id);
+
         this.musicaService.getMusicas().subscribe((data) => {
           this.musicas = data; // ATUALIZA A TELA
         });

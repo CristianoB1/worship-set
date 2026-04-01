@@ -43,9 +43,11 @@ export class ModalInsertComponent implements OnInit {
       next: (data) => {
         console.log('Musica inserida com sucesso:', data);
         this.erroMsg = '';
-        this.fecharModal();
-        setTimeout(() => {
-        window.location.reload()}, 2000);
+
+        this.dialogRef.close(data);
+        // this.fecharModal();
+        // setTimeout(() => {
+        // window.location.reload()}, 2000);
       },
       error: (err) => {
         console.error('Erro ao inserir musica:', err);
