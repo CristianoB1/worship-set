@@ -1,12 +1,11 @@
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { ModalInsertComponent } from '../modal-insert/modal-insert.component';
 import { MusicasService } from '../musicas/musicas.service';
 import { Musicas } from '../musicas/musicas';
 import { CommonModule } from '@angular/common';
 import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
 import { ModalTutoriaisComponent } from '../modal-tutoriais/modal-tutoriais.component';
-
 
 @Component({
   selector: 'app-home',
@@ -18,6 +17,8 @@ export class HomeComponent implements OnInit {
 
   musicas: Musicas[] = [];
   musicasOriginal: Musicas[] = [];
+
+  private cdr = inject(ChangeDetectorRef);
 
   constructor(private musicasService: MusicasService) {
 
@@ -74,8 +75,11 @@ export class HomeComponent implements OnInit {
   atualizarLista(): void {
   this.musicasService.getMusicas().subscribe({
     next: (data) => {
-      this.musicas = data;
-      this.musicasOriginal = data;
+      this.musicas = [...data];
+      this.musicasOriginal = [...data];
+
+      this.cdr.detectChanges(); 
+
       console.log('Dados carregados com sucesso:');
     },
     error: (err) => console.error('Erro ao obter musicas::', err),
