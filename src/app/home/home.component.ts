@@ -1,4 +1,4 @@
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Component, OnInit, inject } from '@angular/core';
 import { ModalInsertComponent } from '../modal-insert/modal-insert.component';
 import { MusicasService } from '../musicas/musicas.service';
@@ -11,36 +11,13 @@ import { ModalTutoriaisComponent } from '../modal-tutoriais/modal-tutoriais.comp
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  imports: [CommonModule],
+  imports: [CommonModule,],
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 
   musicas: Musicas[] = [];
   musicasOriginal: Musicas[] = [];
-
-  readonly dialogInsert = inject(MatDialog);
-  openDialogInsert(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialogInsert.open(ModalInsertComponent, {
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-  }
-
-  readonly dialogDel = inject(MatDialog);
-  openDialogDel(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialogDel.open(ModalDeleteComponent, {
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-  }
-  readonly dialogTutor = inject(MatDialog);
-  openDialogTutor(enterAnimationDuration: string, exitAnimationDuration: string): void {
-    this.dialogInsert.open(ModalTutoriaisComponent, {
-      enterAnimationDuration,
-      exitAnimationDuration,
-    });
-  }
 
   constructor(private musicasService: MusicasService) {
 
@@ -54,8 +31,55 @@ export class HomeComponent implements OnInit {
       },
       error: (err) => console.error('erro ao obter musicas:', err),
     });
-
+    this.atualizarLista();
   }
+
+  readonly dialogInsert = inject(MatDialog);
+  openDialogInsert(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    // this.dialogInsert.open(ModalInsertComponent, {
+    //   enterAnimationDuration,
+    //   exitAnimationDuration,
+    // });
+
+    const dialogRef = this.dialogInsert.open(ModalInsertComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.atualizarLista();
+    });
+  }
+
+  readonly dialogDel = inject(MatDialog);
+  openDialogDel(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    const dialogRef = this.dialogDel.open(ModalDeleteComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      this.atualizarLista();
+    });
+  }
+  readonly dialogTutor = inject(MatDialog);
+  openDialogTutor(enterAnimationDuration: string, exitAnimationDuration: string): void {
+    this.dialogInsert.open(ModalTutoriaisComponent, {
+      enterAnimationDuration,
+      exitAnimationDuration,
+    });
+  }
+
+
+  atualizarLista(): void {
+  this.musicasService.getMusicas().subscribe({
+    next: (data) => {
+      this.musicas = data;
+      this.musicasOriginal = data;
+    },
+    error: (err) => console.error('Erro ao atualizar lista:', err),
+  });
+}
 
   //filtro por nome da musica em um input de busca
   filterSongs(searchTerm: string): void {
