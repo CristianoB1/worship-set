@@ -20,16 +20,17 @@ export class ModalInsertComponent implements OnInit {
   musicaData = {
     nome: '',
     tom: '',
-    bpm: null,
+    bpm: null as number | null,
     link: '',
     categoria: '',
     duracao: ''
   }
 
-  constructor(private musicasService: MusicasService,
+  constructor(
+    private musicasService: MusicasService,
     private dialogRef: MatDialogRef<ModalInsertComponent>
   ) {
-    console.log(this.musicasService)
+    // console.log(this.musicasService)
   }
 
   ngOnInit() {
@@ -38,6 +39,12 @@ export class ModalInsertComponent implements OnInit {
 
 
   addMusica() {
+
+    if (!this.musicaData.nome || !this.musicaData.duracao) {
+      this.erroMsg = 'Por favor, preencha os campos obrigatórios.';
+      return;
+    }
+
     console.log('Musica a ser inserida:', this.musicaData);
     this.musicasService.postMusica(this.musicaData).subscribe({
       next: (data) => {
@@ -45,9 +52,6 @@ export class ModalInsertComponent implements OnInit {
         this.erroMsg = '';
 
         this.dialogRef.close(data);
-        // this.fecharModal();
-        // setTimeout(() => {
-        // window.location.reload()}, 2000);
       },
       error: (err) => {
         console.error('Erro ao inserir musica:', err);
@@ -59,8 +63,33 @@ export class ModalInsertComponent implements OnInit {
   fecharModal() {
     this.dialogRef.close();
   }
-  // isValidDuration(value: string): boolean {
-  //   const regex = /^[0-5]?\d:[0-5]\d$/;
-  //   return regex.test(value);
-  // }
+validarBpm(event: any) {
+  // 1. Pega o valor atual e remove tudo que NÃO for número
+  let valor = event.target.value.replace(/\D/g, '');
+
+  // 2. Corta para no máximo 3 caracteres (garantia extra além do maxlength)
+  if (valor.length > 3) {
+    valor = valor.substring(0, 3);
+  }
+
+  // 3. Converte para número para salvar no objeto (ou mantém null se vazio)
+  this.musicaData.bpm = valor ? parseInt(valor, 10) : null;
+
+  // 4. Atualiza o valor visual do input imediatamente
+  event.target.value = valor;
+}
+
+  formatarDuracao(event: any) {
+  let v = event.target.value.replace(/\D/g, ''); // Remove o que não é número
+  
+  if (v.length > 4) v = v.substring(0, 4); // Limita a 4 dígitos numéricos
+
+  if (v.length >= 3) {
+    // Insere os dois pontos após o segundo dígito
+    v = v.substring(0, 2) + ':' + v.substring(2);
+  }
+  
+  this.musicaData.duracao = v;
+}
+
 }

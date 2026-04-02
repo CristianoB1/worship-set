@@ -24,11 +24,11 @@
       </div>
       <div class="col-span-4">
         <label class="block font-semibold mb-1">BPM</label>
-        <input type="number" min="40" max="300" class="w-full border rounded-md px-3 py-2" [(ngModel)]="musicaData.bpm" name="bpm" />
+        <input type="tel" min="40" max="300" class="w-full border rounded-md px-3 py-2" [(ngModel)]="musicaData.bpm" name="bpm" (input)="validarBpm($event)" maxlength="3"/>
       </div>
       <div class="col-span-4">
         <label class="block font-semibold mb-1">Duração</label>
-        <input type="text" placeholder="mm:ss" class="w-full border rounded-md px-3 py-2" [(ngModel)]="musicaData.duracao" name="duracao" />
+        <input type="tel" placeholder="00:00" class="w-full border rounded-md px-3 py-2" [(ngModel)]="musicaData.duracao" name="duracao" (input)="formatarDuracao($event)" maxlength="5"/>
       </div>
       <div class="col-span-6">
         <label class="block font-semibold mb-1">Categoria</label>
@@ -43,8 +43,8 @@
         <input placeholder="link" class="w-full border rounded-md px-3 py-2 font-mono" [(ngModel)]="musicaData.link" name="cifra"/>
       </div>
       <div class="flex col-span-12 justify-between mt-2">
-        <button class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 focus:outline-none focus:ring focus:border-gray-300" (click)="fecharModal()">Cancelar</button>
-        <button class="text-white px-2 py-1.5 rounded-md bg-blue-600 focus:outline-none focus:ring focus:border-blue-300" >Adicionar</button>
+        <button class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 focus:outline-none focus:ring focus:border-gray-300" type="button" (click)="fecharModal()">Cancelar</button>
+        <button class="text-white px-2 py-1.5 rounded-md bg-blue-600 focus:outline-none focus:ring focus:border-blue-300" type="submit" [disabled]="!musicForm.form.valid">Adicionar</button>
       </div>
     </form>
     <div *ngIf="erroMsg" class="text-red-600 mt-2">
