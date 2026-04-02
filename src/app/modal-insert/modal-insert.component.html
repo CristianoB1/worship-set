@@ -3,7 +3,7 @@
     <form class="grid grid-cols-12 gap-1.5" #musicForm="ngForm" (ngSubmit)="addMusica()">
       <div class="col-span-12">
         <label class="block font-semibold mb-1">Nome da música</label>
-        <input type="text" class="w-full border rounded-md px-3 py-2" [(ngModel)]="musicaData.nome" name="nome" required />
+        <input type="text" class="w-full border rounded-md px-3 py-2" [(ngModel)]="musicaData.nome" name="nome" autocomplete="off" required />
       </div>
       <div class="col-span-4">
         <label class="block font-semibold mb-1">Tom</label>
